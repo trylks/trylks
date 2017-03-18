@@ -14,7 +14,9 @@ Well, not for what I want to achieve.
 
 * You want Docker? Then say [hello to VirtualBox](https://docs.docker.com/toolbox/toolbox_install_windows/)
 * Using VirtualBox? Then forget about [proper GPU support](https://superuser.com/questions/779070/use-nvidia-gpu-from-virtualbox).
-* And of course you can use bash in Windows, but that may not work so well for 
+* And of course you can use bash in Windows,
+   but that may [not work so well for graphical aplications](https://www.howtogeek.com/261575/how-to-run-graphical-linux-desktop-applications-from-windows-10s-bash-shell/),
+   or anything interesting for the matter.
 
 At this point Windows feels like a [tar pit](http://nowbuzz.me/wp-content/uploads/2016/10/12-PuppyInTar.jpg),
 where it is [impossible to move](http://shaffner.us/cs/papers/tarpit.pdf):
@@ -113,11 +115,16 @@ Steps for my preferred configuration are:
       1. Windows for hibernation, installing software, etc. about 300GB IMHO
       2. Another one for Linux, about 400GB
       3. Remaining for shared files.
-1. Clone SDD in Windows HDD partition. Check it is fine. It should boot, if it doesn't, it is not properly recognized as a bootable OS.
-   You have two options:
+1. Clone SDD in Windows HDD partition.
+   Check it is fine.
+   It should boot, if it doesn't, it is not properly recognized as a bootable OS.
+   You have several options:
    
-      1. Try to fix it yourself.
+      1. Try to fix it yourself. Good luck!
       1. Use Grub and hope it fixes your installation. (I chose this, I'm lazy).
+      1. Repeat with [better software](http://windowsreport.com/move-windows-10-ssd/).
+         If it is possible to move to the SSD, it must be possible to move _from_ the SSD.
+         I mean, [shouldn't the reverse be possible?](https://youtu.be/9DLQyo3NntE?t=1m11s)
 1. Check the boot order is correct, try to boot from the "new" windows.
 1. Partition SSD, deleting Windows. One partition goes to Windows, the other one to Linux.
    Make both partitions slightly uneven, that may make identification easier if needed.
@@ -134,6 +141,15 @@ Steps for my preferred configuration are:
 1. Check that the Linux installation works as expected.
 1. Install SRT for faster Windows too.
 
+#### Install SRT
+
+http://www.pcworld.com/article/248828/how_to_setup_intel_smart_response_ssd_caching_technology.html
+http://askubuntu.com/questions/308481/howto-run-ubuntu-with-uefi-and-intel-smart-response-technology
+
+#### Install bcachefs
+
+https://bcache.evilpiepirate.org/
+http://askubuntu.com/questions/252140/how-do-i-install-and-use-flashcache-bcache-to-cache-hdd-to-ssd
 
 ### Improve Linux
 
@@ -151,6 +167,13 @@ The clock speed of the processor should be variable according to the usage too.
 
 There are very nice guides online, I do not plan to replicate them, but to fill any gaps that they may have.
 For example being more customized to Dell 7566.
+
+
+
+# When everything fails
+
+1. [Install tensorflow with GPU support for windows](https://nitishmutha.github.io/tensorflow/2017/01/22/TensorFlow-with-gpu-for-windows.html)
+2. Play "In the end" by Linkin Park...
 
 
 
