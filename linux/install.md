@@ -40,7 +40,7 @@ hopefully after I can make enough money to have a house to put it into.
 Time will tell.
 
 You may have different motivations.
-Whatever your motivations are, if you have already discarded other options, then 
+Whatever your motivations are, if you have already discarded other options, then go ahead and do this.
 
 ## Objectives of this guide
 
@@ -53,6 +53,7 @@ Some are covered already and checked, some are not. The eternal fight with Krono
 - [ ] Fix problems with Linux.
 - [ ] Improve linux (thermal management, etc.)
 - [ ] Install Tensorflow. 
+- [ ] Improve user account (to git, etc.)
 
 
 ## Steps to perform
@@ -80,9 +81,9 @@ If you are on Linux then the usual `dd` command.
 There is plenty of info online about how to do this.
 What is more rare to find is a list of the things that you should be checking:
 
-- [ ] The system boots (hard to miss, though)
+- [x] The system boots (hard to miss, though)
 - [ ] HDD is accessible, absolutely necessary to be able to install Linux in it.
-- [ ] Internet connection, important because the installation will probably get packages from the Internet.
+- [x] Internet connection, important because the installation will probably get packages from the Internet.
 - [ ] CPU and GPU(s) are recognized properly. Patching the kernel later may be needed/feasible, but that's another guide.
 - [ ] Graphics, sound, multimedia, bluetooth, other devices... These are secondary, and AFAIK the risk of needing to patch the kernel is lower.
 
@@ -104,16 +105,34 @@ It has a 128GB SSD and a 1TB HDD.
 Initially, everything is in the 128GB SSD.
 Steps for my preferred configuration are:
 
-1. Split HDD in two partitions 400 for Linux, remaining for Windows.
-Reason is: Windows is accessible from Linux, so all multimedia and games goes there.
-Datasets and large files may also go there, at least old ones.
-1. Clone SDD in Windows HDD partition.
-Check it is fine.
-1. ???
-1. Partition SSD, deleting Windows. One partition goes to Windows, the other one to Linux ???
-
-
-
+1. Split HDD in two partitions 400GB for Linux, not partitioned (free space) remaining for Windows.
+   Reason is: Windows is accessible from Linux, so all multimedia and games goes there.
+   Datasets and large files may also go there, at least old ones.
+   If you are worried about Windows partition not being accesible because NTFS locks it when hibernating, then split it in three.
+        
+      1. Windows for hibernation, installing software, etc. about 300GB IMHO
+      2. Another one for Linux, about 400GB
+      3. Remaining for shared files.
+1. Clone SDD in Windows HDD partition. Check it is fine. It should boot, if it doesn't, it is not properly recognized as a bootable OS.
+   You have two options:
+   
+      1. Try to fix it yourself.
+      1. Use Grub and hope it fixes your installation. (I chose this, I'm lazy).
+1. Check the boot order is correct, try to boot from the "new" windows.
+1. Partition SSD, deleting Windows. One partition goes to Windows, the other one to Linux.
+   Make both partitions slightly uneven, that may make identification easier if needed.
+   Bigger for Linux or Windows that's entierly for you.
+1. For Windows smart response from Intel should work fine.
+   It is a [no-go for Linux](http://askubuntu.com/questions/308481/howto-run-ubuntu-with-uefi-and-intel-smart-response-technology), though.
+   On Linux it is possible to use [flashcache or bcache](http://askubuntu.com/questions/252140/how-do-i-install-and-use-flashcache-bcache-to-cache-hdd-to-ssd).
+   Another nice option is to use the SSD for the swap partition.
+   It depends on what annoys you more:
+     a. Time to hibernate and wake up Linux, or running out of memory (e.g. you are doing big data)
+     b. Time to boot up usual programs, like the web browser, your favorite IDE, etc.
+   The latter is worse IMHO, so I'm going with this one, if suitable during installation...
+1. Install Linux, hope everything goes well. (This includes the flashcache, bcache, or swap installation properly)
+1. Check that the Linux installation works as expected.
+1. Install SRT for faster Windows too.
 
 
 ### Improve Linux
@@ -121,4 +140,17 @@ Check it is fine.
 Power management.
 https://help.ubuntu.com/community/PowerManagement/ReducedPower
 https://help.ubuntu.com/community/SensorInstallHowto
+
+Check the usage of the CPU, the integrated GPU, and the Nvidia GPU.
+
+The clock speed of the processor should be variable according to the usage too.
+
+
+
+### Install Tensorflow
+
+There are very nice guides online, I do not plan to replicate them, but to fill any gaps that they may have.
+For example being more customized to Dell 7566.
+
+
 
