@@ -177,3 +177,17 @@ For example being more customized to Dell 7566.
 
 
 
+
+
+Many faces of CEO <- should post this somewhere...
+
+https://www.youtube.com/watch?v=3huOowaRsrw
+
+Becoming CEO 6:28
+Congratulating underpaid interns 8:43
+Replacing old expensive employees with young cheaper ones 17:32
+Recruiting 25:33
+convincing that click prediction and SEO is much like open source and academia 28:30
+my company is better than your current one 31:30
+36:57
+after recruiting 38:44
