@@ -96,6 +96,7 @@ And I would enjoy to have some spare time for video games...
 ### Make room for the installation
 
 If you already have Windows and what not on your computer, you will need to create partitions on it, and hope everything goes well.
+[There are very good guides on that](http://lifehacker.com/5837543/how-to-migrate-to-a-solid-state-drive-without-reinstalling-windows).
 
 1. Create a [USB recovery drive](https://support.microsoft.com/en-us/instantanswers/3a747883-b706-43a5-a286-9e98f886d490/create-a-recovery-drive) if you don't have one
 1. Have some backup (out of the PC) for all your files, configuration, and whatever you may need.
