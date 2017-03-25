@@ -98,6 +98,37 @@ And I would enjoy to have some spare time for video games...
 If you already have Windows and what not on your computer, you will need to create partitions on it, and hope everything goes well.
 [There are very good guides on that](http://lifehacker.com/5837543/how-to-migrate-to-a-solid-state-drive-without-reinstalling-windows).
 
+Here is the original config:
+
+      Disk /dev/sda: 119.2 GiB, 128035676160 bytes, 250069680 sectors
+      Units: sectors of 1 * 512 = 512 bytes
+      Sector size (logical/physical): 512 bytes / 512 bytes
+      I/O size (minimum/optimal): 512 bytes / 512 bytes
+      Disklabel type: gpt
+      Disk identifier: C5B1902E-21A8-4656-B516-E141380BB171
+
+      Device         Start       End   Sectors   Size Type
+      /dev/sda1       2048   1026047   1024000   500M EFI System
+      /dev/sda2    1026048   1288191    262144   128M Microsoft reserved
+      /dev/sda3    1288192 223821823 222533632 106.1G Microsoft basic data
+      /dev/sda4  223821824 224743423    921600   450M Windows recovery environment
+      /dev/sda5  224743424 247797759  23054336    11G Windows recovery environment
+      /dev/sda6  247799808 250068991   2269184   1.1G Windows recovery environment
+
+
+      Disk /dev/sdb: 931.5 GiB, 1000204886016 bytes, 1953525168 sectors
+      Units: sectors of 1 * 512 = 512 bytes
+      Sector size (logical/physical): 512 bytes / 4096 bytes
+      I/O size (minimum/optimal): 4096 bytes / 4096 bytes
+      Disklabel type: gpt
+      Disk identifier: BB8208FC-D09B-4909-929A-7B5A0B4C22F5
+
+      Device      Start        End    Sectors   Size Type
+      /dev/sdb1    2048     264191     262144   128M Microsoft reserved
+      /dev/sdb2  264192 1953523711 1953259520 931.4G Microsoft basic data
+
+You probably want to keep more than one or two of those partitions...
+
 1. Create a [USB recovery drive](https://support.microsoft.com/en-us/instantanswers/3a747883-b706-43a5-a286-9e98f886d490/create-a-recovery-drive) if you don't have one
 1. Have some backup (out of the PC) for all your files, configuration, and whatever you may need.
 1. Reshape partitions with some software appropriate for it (I've used [partition magic](http://www.partition-tool.com/partition-magic/free-download-partition-magic-full-version.html) in the past)
