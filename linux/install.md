@@ -4,6 +4,18 @@ There is a lot of info in this guide.
 There is a lot of info missing in this guide.
 Open an issue if you miss something particularly relevant.
 
+## TODO
+
+Check these:
+
+https://www.grepular.com/Disk_Caching_with_SSDs_Linux_and_Windows
+https://www.dell.com/support/article/us/en/19/SLN147923/intel-smart-response-technology-configuration?lang=EN
+http://www.linuxquestions.org/questions/linux-newbie-8/gparted-partitioning-options-align-to-cylinder-or-to-mib-834366/
+https://www.thomas-krenn.com/en/wiki/Partition_Alignment
+https://www.howtoforge.com/tutorial/installing-tensorflow-neural-network-software-for-cpu-and-gpu-on-ubuntu-16-04/?platform=hootsuite
+
+LVM better than bcache?
+
 ## Personal prelude (I want to write it, you want to skip it)
 
 Always a frustrating experience, sometimes you may question:
