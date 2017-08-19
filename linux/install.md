@@ -38,32 +38,32 @@ Some are covered already and checked, some are not. The eternal fight with Krono
 Leaving empty space is the best way for Ubuntu to find such space.
 Here is the original config:
 
-      Disk /dev/sda: 119.2 GiB, 128035676160 bytes, 250069680 sectors
-      Units: sectors of 1 * 512 = 512 bytes
-      Sector size (logical/physical): 512 bytes / 512 bytes
-      I/O size (minimum/optimal): 512 bytes / 512 bytes
-      Disklabel type: gpt
-      Disk identifier: C5B1902E-21A8-4656-B516-E141380BB171
+          Disk /dev/sda: 119.2 GiB, 128035676160 bytes, 250069680 sectors
+          Units: sectors of 1 * 512 = 512 bytes
+          Sector size (logical/physical): 512 bytes / 512 bytes
+          I/O size (minimum/optimal): 512 bytes / 512 bytes
+          Disklabel type: gpt
+          Disk identifier: C5B1902E-21A8-4656-B516-E141380BB171
 
-      Device         Start       End   Sectors   Size Type
-      /dev/sda1       2048   1026047   1024000   500M EFI System
-      /dev/sda2    1026048   1288191    262144   128M Microsoft reserved
-      /dev/sda3    1288192 223821823 222533632 106.1G Microsoft basic data
-      /dev/sda4  223821824 224743423    921600   450M Windows recovery environment
-      /dev/sda5  224743424 247797759  23054336    11G Windows recovery environment
-      /dev/sda6  247799808 250068991   2269184   1.1G Windows recovery environment
+          Device         Start       End   Sectors   Size Type
+          /dev/sda1       2048   1026047   1024000   500M EFI System
+          /dev/sda2    1026048   1288191    262144   128M Microsoft reserved
+          /dev/sda3    1288192 223821823 222533632 106.1G Microsoft basic data
+          /dev/sda4  223821824 224743423    921600   450M Windows recovery environment
+          /dev/sda5  224743424 247797759  23054336    11G Windows recovery environment
+          /dev/sda6  247799808 250068991   2269184   1.1G Windows recovery environment
 
 
-      Disk /dev/sdb: 931.5 GiB, 1000204886016 bytes, 1953525168 sectors
-      Units: sectors of 1 * 512 = 512 bytes
-      Sector size (logical/physical): 512 bytes / 4096 bytes
-      I/O size (minimum/optimal): 4096 bytes / 4096 bytes
-      Disklabel type: gpt
-      Disk identifier: BB8208FC-D09B-4909-929A-7B5A0B4C22F5
+          Disk /dev/sdb: 931.5 GiB, 1000204886016 bytes, 1953525168 sectors
+          Units: sectors of 1 * 512 = 512 bytes
+          Sector size (logical/physical): 512 bytes / 4096 bytes
+          I/O size (minimum/optimal): 4096 bytes / 4096 bytes
+          Disklabel type: gpt
+          Disk identifier: BB8208FC-D09B-4909-929A-7B5A0B4C22F5
 
-      Device      Start        End    Sectors   Size Type
-      /dev/sdb1    2048     264191     262144   128M Microsoft reserved
-      /dev/sdb2  264192 1953523711 1953259520 931.4G Microsoft basic data
+          Device      Start        End    Sectors   Size Type
+          /dev/sdb1    2048     264191     262144   128M Microsoft reserved
+          /dev/sdb2  264192 1953523711 1953259520 931.4G Microsoft basic data
 1. Next config:
     Split HDD in two partitions 400GB for Linux, not partitioned (free space) remaining for Windows.
     Reason is: Windows is accessible from Linux, so all multimedia and games goes there.
