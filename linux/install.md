@@ -13,8 +13,6 @@ https://www.howtoforge.com/tutorial/installing-tensorflow-neural-network-softwar
 
 LVM better than bcache?
 
-## Personal prelude (I want to write it, you want to skip it)
-
 ## Objectives of this guide
 
 Some are covered already and checked, some are not. The eternal fight with Kronos that he keeps winning...
@@ -30,7 +28,7 @@ Some are covered already and checked, some are not. The eternal fight with Krono
 
 ### Move Windows
 
-1. Create a [USB recovery drive](https://support.microsoft.com/en-us/instantanswers/3a747883-b706-43a5-a286-9e98f886d490/create-a-recovery-drive) and data backup, because shit happens, it's always good having one.
+1. Create a [USB recovery drive](https://support.microsoft.com/en-us/instantanswers/3a747883-b706-43a5-a286-9e98f886d490/create-a-recovery-drive) and data backup, because shit happens, it's always good having one. Check the info on the drives you have: `# fdisk -l`.
 1. Move windows.
     1. Remember: Cloning HDDs is not useful
 [[1]](http://lifehacker.com/5837543/how-to-migrate-to-a-solid-state-drive-without-reinstalling-windows),
