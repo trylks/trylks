@@ -33,7 +33,7 @@ Some are covered already and checked, some are not. The eternal fight with Krono
     1. Remember: Cloning HDDs is not useful
 [[1]](http://lifehacker.com/5837543/how-to-migrate-to-a-solid-state-drive-without-reinstalling-windows),
 [[2]](http://www.partition-tool.com/partition-magic/free-download-partition-magic-full-version.html).
-[[3]](http://lifehacker.com/5517688/how-to-upgrade-your-tiny-hard-drive-to-a-spacious-new-one-and-keep-your-data-intact).
+[[3]](http://lifehacker.com/5517688/how-to-upgrade-your-tiny-hard-drive-to-a-spacious-new-one-and-keep-your-data-intact). If the drive is small, I would clone it to a external media for additional safety (i.e. step 1), though.
     1. You want to
 [use gparted](http://www.linuxquestions.org/questions/linux-newbie-8/gparted-partitioning-options-align-to-cylinder-or-to-mib-834366/),
 [align to cylinder](https://www.thomas-krenn.com/en/wiki/Partition_Alignment),
