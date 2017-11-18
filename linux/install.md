@@ -29,30 +29,38 @@ So here is how this goes:
    Technically you don't need to do this with the recovery options that windows has, but...
 1. Since you are at it, clone the restoration pendrive too.
 1. Boot with the LiveUSB, use gparted, create the partitions in the HDD.
-   Choose your preferred size and location, I won't judge you, but for the sake of what you love most,
-   align the partitions to a sector, it is a checkbox over there.
-1. Move the partitions from the SSD to the HDD with `dd`.
+   Choose your preferred size and location, I won't judge you.
+1. Once you are done, check with `fdisk -l` that partitions are aligned properly.
+   In theory using `align to cylinder` in gparted should provide the best results.
+   In practice I had better results using `align to MiB`, so... good luck!
+   Just make sure that everything is working properly before continuing with the next steps, this is important.
+1. Move the partitions from the SSD to the HDD with `dd`, just like before, with proper numbers and all.
    My suggestion is to do this one by one, and leave EFI in the SSD (normally the first one).
 1. Delete the partitions that you have moved from the original SSD.
    Now you can try to boot your computer, but that won't work. Isn't it great?
    You took a perfectly working laptop and destroyed it beyond any possible repair :D
 1. You have to tell EFI how to find windows again, it's _very easy_.
     1. Boot the computer from the restoration USB; select repair > operating system > command prompt
-    1. Run `diskpart`, use `listvol` to see the volumes, play Hanoi towers to get `C:` to be `C:`, the commands are:
+    1. Run `diskpart`, use `list vol` to see the volumes, play Hanoi towers to get `C:` to be `C:`, the commands are:
         1. `sel vol $number` to select some volume
         1. `assign letter=$letter:` to assign a letter
     1. Remember to assign a letter to the EFI partitition, e.g. A, you will need that later, then exit with `exit` (that unexpected)
-    1. Let's say the EFI partition is `A:`, then do `cd /d A:\EFI\Microsoft\Boot\`,, to be in the right place at the right time
+    1. Let's say the EFI partition is `A:`, then do `cd /d A:\EFI\Microsoft\Boot\`, to be in the right place at the right time
     1. Do `bootrec /FixBoot`, this probably wasn't necessary, but better be safe
     1. Then, since you are here, save the current boot just in case: `ren BCD BCD.old`
     1. And make the new one: `bcdboot C:\Windows`
-1. Now you should be able to boot Windows again, but we are not done yet, you need to defrag the HDD.
-   This was not necessary back when it was a SSD, and now it is messy...
-    1. First, Windows has to recognise it as a HDD, open `cmd` as an admin and run `winsat formal`.
+1. You need to defrag the HDD, this was not necessary back when it was a SSD, and now it is messy... 
+   You can do it now (from Linux) or later (from Windows), I will remind you later anyway.
+   Doing it from Linux is "[not recommended](https://bbs.archlinux.org/viewtopic.php?id=125529)".
+   Since we are going to fix the boot soon, there should be no problem, but run this at your own risk, or don't.
+   To defrag it directly from your Live-USB, do something like: `fsck -t ntfs --kerneldefrag /dev/sdX`.
+   If that does not work, maybe that was for the better.
+1. You can safely delete the files at `C:\Windows\Temp`, do it while on Linux, they are not being used by any process.
+1. Now you should be able to boot Windows again, but we are not done yet,
+    1. First, Windows has to recognise the HDD it is installed into as an HDD, open `cmd` as an admin and run `winsat formal`.
     1. If it is still recognised as a SSD and you cannot optimise it, run `winsat diskformal`.
-    1. Now that you can, you have to defrag it, just use the regular tools for that.
-    1. For some reason Windows works like shit and you will need to defrag it like every other day,
-       if you find a solution for that, please let me know.
+    1. Now Windows will handle the defrag for you in the future, but you may want to defrag it manually now and then anyway.
+    1. If you didn't defrag the HDD earlier (you shouldn't) do it now using the tools at your disposal in Windows.
 1. Before continuing, check that everything in your Windows installation is working properly, if it doesn't you can always:
     1. Format the HDD
     1. Restore the SSD from the file you saved on step 2.
