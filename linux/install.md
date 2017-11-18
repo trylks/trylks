@@ -18,14 +18,16 @@ So here is how this goes:
     1. Download your preferred Linux, or two of them if you are going to use different Live-USB and installation pendrives.
     1. Put them in the corresponding pendrives.
         1. I used [rufus](https://rufus.akeo.ie/) to do that from Windows, it is a good option.
-        1. IF you do not want to use rufus, there are plenty of options, including `dd` (we are going to get very familiar with it)
+        1. If you do not want to use rufus, there are plenty of options, including `dd` (we are going to get very familiar with it)
 1. You will need a external HDD with as much space as your SSD (it is 128GB for my laptop)
 
 ## Moving Windows to the HDD
 
 1. Check what is the current situation of your drives `fdisk -l`, identify which one is the SSD, I will assume it is sda (**check it**)
 1. Clone your SSD to a file using `dd if=/dev/sda of=/path/to/file bs=64K conv=noerror,sync status=progress`, in the external HDD.
-   This may be useful in the future. Technically you don't need to do this with the recovery options that windows has, but...
+   This may be useful in the future.
+   Technically you don't need to do this with the recovery options that windows has, but...
+1. Since you are at it, clone the restoration pendrive too.
 1. Boot with the LiveUSB, use gparted, create the partitions in the HDD.
    Choose your preferred size and location, I won't judge you, but for the sake of what you love most,
    align the partitions to a sector, it is a checkbox over there.
