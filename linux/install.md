@@ -39,7 +39,15 @@ So here is how this goes:
 1. Delete the partitions that you have moved from the original SSD.
    Now you can try to boot your computer, but that won't work. Isn't it great?
    You took a perfectly working laptop and destroyed it beyond any possible repair :D
-1. You have to tell EFI how to find windows again, it's _very easy_.
+1. You need to defrag the HDD, this was not necessary back when it was a SSD, and now it is messy... 
+   You can do it now (from Linux) or later (from Windows), I will remind you later anyway.
+   Doing it from Linux is "[not recommended](https://bbs.archlinux.org/viewtopic.php?id=125529)".
+   Since we are going to fix the boot soon, there should be no problem, but run this at your own risk, or don't.
+   To defrag it directly from your Live-USB, do something like: `fsck -t ntfs --kerneldefrag /dev/sdX`.
+   If that does not work, maybe that was for the better.
+1. You can safely delete the files at `C:\Windows\Temp`, do it while on Linux, they are not being used by any process.
+1. OK, now it is time to repair your Windows.
+   You have to tell EFI how to find Windows again, it's _very easy_.
     1. Boot the computer from the restoration USB; select repair > operating system > command prompt
     1. Run `diskpart`, use `list vol` to see the volumes, play Hanoi towers to get `C:` to be `C:`, the commands are:
         1. `sel vol $number` to select some volume
@@ -49,13 +57,6 @@ So here is how this goes:
     1. Do `bootrec /FixBoot`, this probably wasn't necessary, but better be safe
     1. Then, since you are here, save the current boot just in case: `ren BCD BCD.old`
     1. And make the new one: `bcdboot C:\Windows`
-1. You need to defrag the HDD, this was not necessary back when it was a SSD, and now it is messy... 
-   You can do it now (from Linux) or later (from Windows), I will remind you later anyway.
-   Doing it from Linux is "[not recommended](https://bbs.archlinux.org/viewtopic.php?id=125529)".
-   Since we are going to fix the boot soon, there should be no problem, but run this at your own risk, or don't.
-   To defrag it directly from your Live-USB, do something like: `fsck -t ntfs --kerneldefrag /dev/sdX`.
-   If that does not work, maybe that was for the better.
-1. You can safely delete the files at `C:\Windows\Temp`, do it while on Linux, they are not being used by any process.
 1. Now you should be able to boot Windows again, but we are not done yet,
     1. First, Windows has to recognise the HDD it is installed into as an HDD, open `cmd` as an admin and run `winsat formal`.
     1. If it is still recognised as a SSD and you cannot optimise it, run `winsat diskformal`.
