@@ -16,7 +16,9 @@ So here is how this goes:
    If that is your situation, try to update your drivers to a version that works, you need 
 1. You need to prepare a pendrive for the installation of Linux (I recommend Xubuntu, it doubles as a live-USB)
     1. Download your preferred Linux, or two of them if you are going to use different Live-USB and installation pendrives.
-    1. Put them in the corresponding pendrives, I used rufus to do that from windows, you can use something else, e.g. `dd`
+    1. Put them in the corresponding pendrives.
+        1. I used [rufus](https://rufus.akeo.ie/) to do that from Windows, it is a good option.
+        1. IF you do not want to use rufus, there are plenty of options, including `dd` (we are going to get very familiar with it)
 1. You will need a external HDD with as much space as your SSD (it is 128GB for my laptop)
 
 ## Moving Windows to the HDD
@@ -33,18 +35,40 @@ So here is how this goes:
    Now you can try to boot your computer, but that won't work. Isn't it great?
    You took a perfectly working laptop and destroyed it beyond any possible repair :D
 1. You have to tell EFI how to find windows again, it's _very easy_.
-    1.
+    1. Boot the computer from the restoration USB; select repair > operating system > command prompt
+    1. Run `diskpart`, use `listvol` to see the volumes, play Hanoi towers to get `C:` to be `C:`, the commands are:
+        1. `sel vol $number` to select some volume
+        1. `assign letter=$letter:` to assign a letter
+    1. Remember to assign a letter to the EFI partitition, e.g. A, you will need that later, then exit with `exit` (that unexpected)
+    1. Let's say the EFI partition is `A:`, then do `cd /d A:\EFI\Microsoft\Boot\`,, to be in the right place at the right time
+    1. Do `bootrec /FixBoot`, this probably wasn't necessary, but better be safe
+    1. Then, since you are here, save the current boot just in case: `ren BCD BCD.old`
+    1. And make the new one: `bcdboot C:\Windows`
 1. Now you should be able to boot Windows again, but we are not done yet, you need to defrag the HDD.
    This was not necessary back when it was a SSD, and now it is messy...
-    1. First, Windows has to recognise it as a HDD, open `cmd` as an admin and run ``
-    1. Second, you have to defrag it, just use the regular tools for that
+    1. First, Windows has to recognise it as a HDD, open `cmd` as an admin and run `winsat formal`.
+    1. If it is still recognised as a SSD and you cannot optimise it, run `winsat diskformal`.
+    1. Now that you can, you have to defrag it, just use the regular tools for that.
     1. For some reason Windows works like shit and you will need to defrag it like every other day,
        if you find a solution for that, please let me know.
+1. Before continuing, check that everything in your Windows installation is working properly, if it doesn't you can always:
+    1. Format the HDD
+    1. Restore the SSD from the file you saved on step 2.
+    1. Repeat until insanity from step 3, because you wanted to do this, didn't you?
+    
+## Install GNU/Linux
+
+1. Get your favourite distribution and flavor in a pendrive (I did this with rufus)
+1. Install it fully in the SSD
+
+
+
 
 
 Useful references:
 
-https://www.grepular.com/Disk_Caching_with_SSDs_Linux_and_Windows  
-https://www.dell.com/support/article/us/en/19/SLN147923/intel-smart-response-technology-configuration?lang=EN  
-https://www.howtoforge.com/tutorial/installing-tensorflow-neural-network-software-for-cpu-and-gpu-on-ubuntu-16-04/?platform=hootsuite
-
+1. http://www.dell.com/support/article/ie/en/iedhs1/sln300987/how-to-repair-the-efi-bootloader-on-a-gpt-hdd-for-windows-7--8--81-and-10-on-your-dell-pc?lang=en
+1. https://superuser.com/questions/1006877/windows-10-optimize-drives-shows-ssd-as-hard-disk-drive
+1. https://askubuntu.com/questions/169376/clock-time-is-off-on-dual-boot
+1. https://help.ubuntu.com/community/Partitioning/Home/Moving
+1. https://www.drivereasy.com/knowledge/fix-100-disk-usage-in-task-manager-improve-pc-performance-on-windows-10/#d
