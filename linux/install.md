@@ -62,6 +62,10 @@ So here is how this goes:
     1. If it is still recognised as a SSD and you cannot optimise it, run `winsat diskformal`.
     1. Now Windows will handle the defrag for you in the future, but you may want to defrag it manually now and then anyway.
     1. If you didn't defrag the HDD earlier (you shouldn't) do it now using the tools at your disposal in Windows.
+    1. Check the size of the Windows partition and if it is right.
+1. If the size of the windows partition is not right you can
+   [extend](https://serverfault.com/questions/90870/i-have-a-ntfs-partition-now-the-size-of-the-partition-seems-to-be-wrong-is-ther)
+   it booting from the repair pendrive again.
 1. Before continuing, check that everything in your Windows installation is working properly, if it doesn't you can always:
     1. Format the HDD
     1. Restore the SSD from the file you saved on step 2.
@@ -83,3 +87,6 @@ Useful references:
 1. https://askubuntu.com/questions/169376/clock-time-is-off-on-dual-boot
 1. https://help.ubuntu.com/community/Partitioning/Home/Moving
 1. https://www.drivereasy.com/knowledge/fix-100-disk-usage-in-task-manager-improve-pc-performance-on-windows-10/#d
+1. https://support.microsoft.com/en-us/help/832316/the-partition-size-is-extended-but-the-file-system-remains-the-origina
+1. https://serverfault.com/questions/90870/i-have-a-ntfs-partition-now-the-size-of-the-partition-seems-to-be-wrong-is-ther
+1. http://priede.bf.lu.lv/ftp/pub/Utilities/DiskDefrag/Defragment_NTFS_in_Linux.html
