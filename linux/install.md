@@ -74,10 +74,21 @@ So here is how this goes:
 ## Install GNU/Linux
 
 1. Get your favourite distribution and flavor in a pendrive (I did this with rufus)
-1. Install it fully in the SSD
-
-
-
+1. For some distributions you may need to disable secure boot in the UEFI configuration.
+   In Dell this is done pressing F12, then navigating the menus.
+1. Install it fully in the SSD (this is distribution dependent, but most make it really easy with a graphical installer)
+1. Normally Linux uses global time and windows uses local time, which causes a lot of trouble when using dual boot.
+   Either:
+    1. [Configure Windows to use global time](https://lifehacker.com/5742148/fix-windows-clock-issues-when-dual-booting-with-os-x).
+    1. [Configure Linux to use local time](https://askubuntu.com/questions/169376/clock-time-is-off-on-dual-boot).
+    1. Accept that time may be one hour off sometimes.
+    If you don't switch between windows and linux very often, this is an acceptable (and very lazy) solution,
+    they automatically set the correct time and keep it until you switch to the other OS.
+1. Move some paths from the SSD to the HDD:
+    1. Mount the HDD and create a path there, e.g. /hdd
+    1. `fstab`
+    1. ...
+    1. profit
 
 
 Useful references:
