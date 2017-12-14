@@ -73,6 +73,8 @@ So here is how this goes:
     
 ## Install GNU/Linux
 
+1. You should have some spare space in both the SSD and the HDD.
+   This would be a good moment to create the swap partition in the HDD.
 1. Get your favourite distribution and flavor in a pendrive (I did this with rufus)
 1. For some distributions you may need to disable secure boot in the UEFI configuration.
    In Dell this is done pressing F12, then navigating the menus.
@@ -85,8 +87,12 @@ So here is how this goes:
     If you don't switch between windows and linux very often, this is an acceptable (and very lazy) solution,
     they automatically set the correct time and keep it until you switch to the other OS.
 1. Move some paths from the SSD to the HDD:
-    1. Mount the HDD and create a path there, e.g. /hdd
-    1. `fstab`
+    1. Identify the partition where you want to put the stuff, it will probably be `/dev/sdbX`.
+    1. Then use `blkid` or if it fails `vol_id -u /dev/sdbX` to find the ID of the partition we are considering.
+    1. backup fstab then `vim /etc/fstab` to mount the drive, with a line like this: `UUID=$ID   /.hdd   ext4   defaults  0  2`
+    1. create the paths in `/.hdd`, I would choose `home opt root tmp var`
+    1. copy the files from the SDD to the HDD with rsync preserving permissions and all stuff
+       like this: `rsync -axHAWX --info=progress2 $orig $dest`
     1. ...
     1. profit
 
