@@ -105,7 +105,7 @@ So here is how this goes:
    (optimus, bumblebee, ...)
 
 
-Useful references:
+Some references (I had too many tabs open at the same time):
 
 1. http://www.dell.com/support/article/ie/en/iedhs1/sln300987/how-to-repair-the-efi-bootloader-on-a-gpt-hdd-for-windows-7--8--81-and-10-on-your-dell-pc?lang=en
 1. https://superuser.com/questions/1006877/windows-10-optimize-drives-shows-ssd-as-hard-disk-drive
@@ -116,3 +116,8 @@ Useful references:
 1. https://serverfault.com/questions/90870/i-have-a-ntfs-partition-now-the-size-of-the-partition-seems-to-be-wrong-is-ther
 1. http://priede.bf.lu.lv/ftp/pub/Utilities/DiskDefrag/Defragment_NTFS_in_Linux.html
 1. https://help.ubuntu.com/community/Partitioning/Home/Moving
+1. https://help.ubuntu.com/community/MoveMountpointHowto
+1. https://serverfault.com/questions/67038/how-do-i-mount-sub-directory-to-a-hard-drive-in-linux
+1. https://www.reddit.com/r/archlinux/comments/6vmxcb/repair_efi_before_installing_for_dual_boot/
+1. https://www.reddit.com/r/linuxquestions/comments/75lin2/using_ssd_for_hdd_cache_in_a_dualboot_ubuntu/
+1. http://www.linux-magazine.com/Online/Features/Tune-Your-Hard-Disk-with-hdparm
