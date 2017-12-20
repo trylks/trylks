@@ -93,8 +93,16 @@ So here is how this goes:
     1. create the paths in `/.hdd`, I would choose `home opt root tmp var`
     1. copy the files from the SDD to the HDD with rsync preserving permissions and all stuff
        like this: `rsync -axHAWX --info=progress2 $orig $dest`
-    1. ...
-    1. profit
+    1. Check that the copy went well: `diff -r $orig $dest -x ".gvfs/*"`
+    1. experiment a bit with `mount -o bind $orig $dest`, alternatively `mount -B $orig $dest` before persisting the changes in fstab
+    1. Edit fstab, `/path/orig /new/path bind defaults 0 0` is the syntax to bind in [fstab](https://help.ubuntu.com/community/Fstab).
+       Basically the syntax is: `[Device] [Mount Point] [File System Type] [Options] [Dump] [Pass]`.
+    1. it's best to mount old paths in a new one, and then the new one in the old one, so as to delete the contents of old paths,
+       but at this point it is enough with moving all paths to `/old_$path` (to have a copy in case something goes wrong),
+       and then rebooting or mounting all: `mount -a`
+    1. If you screwed things up, try to repair them with the live USB.
+1. Now we are going to check that TensorFlow and Pytorch use the GPU correctly and that it is not overused and stays cool
+   (optimus, bumblebee, ...)
 
 
 Useful references:
@@ -107,3 +115,4 @@ Useful references:
 1. https://support.microsoft.com/en-us/help/832316/the-partition-size-is-extended-but-the-file-system-remains-the-origina
 1. https://serverfault.com/questions/90870/i-have-a-ntfs-partition-now-the-size-of-the-partition-seems-to-be-wrong-is-ther
 1. http://priede.bf.lu.lv/ftp/pub/Utilities/DiskDefrag/Defragment_NTFS_in_Linux.html
+1. https://help.ubuntu.com/community/Partitioning/Home/Moving
