@@ -83,7 +83,8 @@ So here is how this goes:
    Either:
     1. [Configure Windows to use global time](https://lifehacker.com/5742148/fix-windows-clock-issues-when-dual-booting-with-os-x).
     1. [Configure Linux to use local time](https://askubuntu.com/questions/169376/clock-time-is-off-on-dual-boot).
-    1. Accept that time may be one hour off sometimes.
+       It is as simple as `timedatectl set-local-rtc 1`.
+    1. Accept that time may be several hours off sometimes (the minutes are fine).
     If you don't switch between windows and linux very often, this is an acceptable (and very lazy) solution,
     they automatically set the correct time and keep it until you switch to the other OS.
 1. Move some paths from the SSD to the HDD:
@@ -101,16 +102,23 @@ So here is how this goes:
        but at this point it is enough with moving all paths to `/old_$path` (to have a copy in case something goes wrong),
        and then rebooting or mounting all: `mount -a`
     1. If you screwed things up, try to repair them with the live USB.
-1. Now we are going to check that TensorFlow and Pytorch use the GPU correctly and that it is not overused and stays cool
-   (optimus, bumblebee, ...)
 
+## Bonus: Use the GPU for calculation
+Now we are going to check that TensorFlow and Pytorch use the GPU correctly and that it is not overused and stays cool
+(optimus, bumblebee, ...).
+We will also check that TensorFlow and PyTorch, so first we will install Python, Python environments, 
+TensorFlow, PyTorch, and a few other things.
+TensorFlow makes an excellent description of the [requirements](https://www.tensorflow.org/install/install_linux) to install before.
+
+1. Install python if it is not installed yet.
+1. Install [pipenv](https://pypi.python.org/pypi/pipenv) it is the least insane option for python projects nowadays.
+1. 
 
 Some references (I had too many tabs open at the same time):
 
 1. http://www.dell.com/support/article/ie/en/iedhs1/sln300987/how-to-repair-the-efi-bootloader-on-a-gpt-hdd-for-windows-7--8--81-and-10-on-your-dell-pc?lang=en
 1. https://superuser.com/questions/1006877/windows-10-optimize-drives-shows-ssd-as-hard-disk-drive
 1. https://askubuntu.com/questions/169376/clock-time-is-off-on-dual-boot
-1. https://help.ubuntu.com/community/Partitioning/Home/Moving
 1. https://www.drivereasy.com/knowledge/fix-100-disk-usage-in-task-manager-improve-pc-performance-on-windows-10/#d
 1. https://support.microsoft.com/en-us/help/832316/the-partition-size-is-extended-but-the-file-system-remains-the-origina
 1. https://serverfault.com/questions/90870/i-have-a-ntfs-partition-now-the-size-of-the-partition-seems-to-be-wrong-is-ther
@@ -121,3 +129,4 @@ Some references (I had too many tabs open at the same time):
 1. https://www.reddit.com/r/archlinux/comments/6vmxcb/repair_efi_before_installing_for_dual_boot/
 1. https://www.reddit.com/r/linuxquestions/comments/75lin2/using_ssd_for_hdd_cache_in_a_dualboot_ubuntu/
 1. http://www.linux-magazine.com/Online/Features/Tune-Your-Hard-Disk-with-hdparm
+1. https://catdevblog.nickbair.net/2010/10/30/a-good-ssdhdd-partitioning-scheme/
