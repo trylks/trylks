@@ -113,7 +113,21 @@ TensorFlow makes an excellent description of the [requirements](https://www.tens
 1. Install python if it is not installed yet, also install `python3-pip`
 1. Install [gpustat](https://github.com/wookayin/gpustat)
 1. Install [pipenv](https://pypi.python.org/pypi/pipenv) it is the least insane option for python projects nowadays.
-1. 
+1. Installing cuda is easy in Ubuntu, and it will install the nvidia drivers if you don't have them already:
+    1. `aptitude install linux-headers-$(uname -r)`
+    1. `dpkg -i cuda-repo-<distro>_<version>_<architecture>.deb`, you get an error to do:
+    1. `apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/<distro>/<architecture>/7fa2af80.pub`
+    1. `aptitude update && aptitude -y install cuda`
+1. Now you have to install cuDDN, you may need a developer account in nvidia, go for it and good luck.
+1. Go to a path where you are comfortable and create a virtual environment with pipenv: `pipenv --three`
+1. If it fails, then try again after installing pipenv properly: `sudo -H pip3 install -U pipenv`
+1. `pipenv install tensorflow-gpu`, go eat something, this is the time for it
+1. Check that everything went well:
+    1. `pipenv shell`
+    1. Get mnist and try to run it
+    1. It fails for me, because I installed cuda 9 and tensorflow 1.4 does not support cuda 9
+       3:20AM here, that makes the day for me, I will wait for tensorflow 1.5 to suport cuda 9,
+       and I will try with PyTorch tomorrow
 
 Some references (I had too many tabs open at the same time):
 
@@ -131,3 +145,4 @@ Some references (I had too many tabs open at the same time):
 1. https://www.reddit.com/r/linuxquestions/comments/75lin2/using_ssd_for_hdd_cache_in_a_dualboot_ubuntu/
 1. http://www.linux-magazine.com/Online/Features/Tune-Your-Hard-Disk-with-hdparm
 1. https://catdevblog.nickbair.net/2010/10/30/a-good-ssdhdd-partitioning-scheme/
+1. !!! https://devtalk.nvidia.com/default/topic/991849/-solved-run-cuda-on-dedicated-nvidia-gpu-while-connecting-monitors-to-intel-hd-graphics-is-this-possible-/
