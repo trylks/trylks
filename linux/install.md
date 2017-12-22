@@ -110,7 +110,8 @@ We will also check that TensorFlow and PyTorch, so first we will install Python,
 TensorFlow, PyTorch, and a few other things.
 TensorFlow makes an excellent description of the [requirements](https://www.tensorflow.org/install/install_linux) to install before.
 
-1. Install python if it is not installed yet.
+1. Install python if it is not installed yet, also install `python3-pip`
+1. Install [gpustat](https://github.com/wookayin/gpustat)
 1. Install [pipenv](https://pypi.python.org/pypi/pipenv) it is the least insane option for python projects nowadays.
 1. 
 
