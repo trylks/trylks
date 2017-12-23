@@ -95,13 +95,16 @@ So here is how this goes:
     1. copy the files from the SDD to the HDD with rsync preserving permissions and all stuff
        like this: `rsync -axHAWX --info=progress2 $orig $dest`
     1. Check that the copy went well: `diff -r $orig $dest -x ".gvfs/*"`
-    1. experiment a bit with `mount -o bind $orig $dest`, alternatively `mount -B $orig $dest` before persisting the changes in fstab
-    1. Edit fstab, `/path/orig /new/path bind defaults 0 0` is the syntax to bind in [fstab](https://help.ubuntu.com/community/Fstab).
+    1. experiment a bit with `mount -o bind $dock $contents`,
+       alternatively `mount -B $dock $contents` before persisting the changes in fstab
+    1. Edit fstab, `/path/dock /new/path/contents bind defaults 0 0` is the syntax to bind in
+       [fstab](https://help.ubuntu.com/community/Fstab).
        Basically the syntax is: `[Device] [Mount Point] [File System Type] [Options] [Dump] [Pass]`.
     1. it's best to mount old paths in a new one, and then the new one in the old one, so as to delete the contents of old paths,
        but at this point it is enough with moving all paths to `/old_$path` (to have a copy in case something goes wrong),
        and then rebooting or mounting all: `mount -a`
     1. If you screwed things up, try to repair them with the live USB.
+    1. You can try putting some big file in your `/home` directory to check that everything is properly with `df -h`.
 
 ## Bonus: Use the GPU for calculation
 Now we are going to check that TensorFlow and Pytorch use the GPU correctly and that it is not overused and stays cool
@@ -121,13 +124,14 @@ TensorFlow makes an excellent description of the [requirements](https://www.tens
 1. Now you have to install cuDDN, you may need a developer account in nvidia, go for it and good luck.
 1. Go to a path where you are comfortable and create a virtual environment with pipenv: `pipenv --three`
 1. If it fails, then try again after installing pipenv properly: `sudo -H pip3 install -U pipenv`
-1. `pipenv install tensorflow-gpu`, go eat something, this is the time for it
-1. Check that everything went well:
+1. If you installed CUDA versions compatible with tensorflow and everything, try this:
+    1. `pipenv install tensorflow-gpu`, go eat something, this is the time for it
     1. `pipenv shell`
-    1. Get mnist and try to run it
-    1. It fails for me, because I installed cuda 9 and tensorflow 1.4 does not support cuda 9
-       3:20AM here, that makes the day for me, I will wait for tensorflow 1.5 to suport cuda 9,
-       and I will try with PyTorch tomorrow
+    1. Get mnist, run it, and check with gpustat that it is using the gpu (it is unlikely that it runs using the cpu, but possible)
+1. If you didn't or if PyTorch is more your thing (I have to use both...)
+    1. Get the right version from it's page (yes, package distribution in Python is a PITA)
+    1. Run some example, [MNIST](https://github.com/pytorch/examples/blob/master/mnist/main.py) is like the hello world of CNN.
+    1. Check with `gpustat` it is running in the GPU, to be extra sure.
 
 Some references (I had too many tabs open at the same time):
 
