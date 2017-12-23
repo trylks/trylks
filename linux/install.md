@@ -150,3 +150,4 @@ Some references (I had too many tabs open at the same time):
 1. http://www.linux-magazine.com/Online/Features/Tune-Your-Hard-Disk-with-hdparm
 1. https://catdevblog.nickbair.net/2010/10/30/a-good-ssdhdd-partitioning-scheme/
 1. !!! https://devtalk.nvidia.com/default/topic/991849/-solved-run-cuda-on-dedicated-nvidia-gpu-while-connecting-monitors-to-intel-hd-graphics-is-this-possible-/
+1. https://github.com/pypa/pipenv/issues/550
