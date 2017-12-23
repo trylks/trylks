@@ -120,7 +120,7 @@ TensorFlow makes an excellent description of the [requirements](https://www.tens
     1. `aptitude install linux-headers-$(uname -r)`
     1. `dpkg -i cuda-repo-<distro>_<version>_<architecture>.deb`, you get an error to do:
     1. `apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/<distro>/<architecture>/7fa2af80.pub`
-    1. `aptitude update && aptitude -y install cuda`
+    1. `aptitude update && aptitude -y install cuda && aptitude install nvidia-cuda-toolkit`
 1. Now you have to install cuDDN, you may need a developer account in nvidia, go for it and good luck.
 1. Go to a path where you are comfortable and create a virtual environment with pipenv: `pipenv --three`
 1. If it fails, then try again after installing pipenv properly: `sudo -H pip3 install -U pipenv`
