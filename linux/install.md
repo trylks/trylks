@@ -132,6 +132,48 @@ TensorFlow makes an excellent description of the [requirements](https://www.tens
     1. Get the right version from it's page (yes, package distribution in Python is a PITA)
     1. Run some example, [MNIST](https://github.com/pytorch/examples/blob/master/mnist/main.py) is like the hello world of CNN.
     1. Check with `gpustat` it is running in the GPU, to be extra sure.
+1. YMMV, but if you want to use an external monitor and close the lid of your laptop,
+   I had to set `HandleLidSwitch=ignore` at `/etc/systemd/logind.conf`, and
+   `IgnoreLid=true` at `/etc/UPower/UPower.conf`. As a result, be aware that closing the lid does nothing at all,
+   i.e. the computer is not suspended, but the screen is still on, it is bad that it may use some battery, and it may be
+   worse without an screensaver. So you should remember to turn off your screen when using only an external monitor
+   (in that sense, I use the laptop as a desktop usually) or change the settings if you want to use the laptop as a laptop.
+1. If you want to use: an external monitor in your laptop, the GPU for computation, and the Intel integrated GPU for GUI, then
+   I was able to not see xorg at `gpustat -cup` after putting this in my `/etc/X11/xorg.conf` (YMMV):
+```
+Section "ServerLayout"
+    Identifier "layout"
+    Screen 0 "intel"
+    Screen 1 "intel"
+    Inactive "intel"
+EndSection
+
+Section "Device"
+    Identifier "intel"
+    Driver "modesetting"
+    BusID "PCI:0@0:2:0"
+    Option "AccelMethod" "None"
+EndSection
+
+Section "Screen"
+    Identifier "intel"
+    Device "intel"
+EndSection
+
+Section "Device"
+    Identifier "nvidia"
+    Driver "nvidia"
+    BusID "PCI:1@0:0:0"
+    Option "ConstrainCursor" "off"
+EndSection
+
+Section "Screen"
+    Identifier "nvidia"
+    Device "nvidia"
+    Option "AllowEmptyInitialConfiguration" "on"
+    Option "IgnoreDisplayDevices" "CRT"
+EndSection
+```
 
 Some references (I had too many tabs open at the same time):
 
