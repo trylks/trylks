@@ -145,14 +145,15 @@ Section "ServerLayout"
     Identifier "layout"
     Screen 0 "intel"
     Screen 1 "intel"
-    Inactive "intel"
+    Inactive "nvidia"
 EndSection
 
 Section "Device"
     Identifier "intel"
     Driver "modesetting"
     BusID "PCI:0@0:2:0"
-    Option "AccelMethod" "None"
+    Option "TearFree" "true"
+    Option "AccelMethod" "sna"
 EndSection
 
 Section "Screen"
@@ -174,6 +175,14 @@ Section "Screen"
     Option "IgnoreDisplayDevices" "CRT"
 EndSection
 ```
+1. On a side note, `TearFree` did not remove tearing.
+   In addition, there may be some problem causing your `/etc/X11/xorg.conf` being overwritten.
+    1. The easy thing to do is `chattr +i /etc/X11/xorg.conf`
+    1. In theory something can be done with the cause of the overwriting: `/etc/init/gpu-manager.conf` (I failed at that)
+    1. If it is being overwritten, it may be for a good reason, which may be related with the tearing.
+       Hopefully new versions will repair this (next LTS version to be realeased soon),
+       because the Internet does not seem to know how to fix it and I surely have no idea.
+
 
 Some references (I had too many tabs open at the same time):
 
