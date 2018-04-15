@@ -23,6 +23,18 @@ Docker for everything? Sounds like a plan...
    some people [do not agree](https://medium.com/@schtoeffel/you-don-t-need-more-than-one-cursor-in-vim-2c44117d51db).
 4. Some people have much more fancy vim installations (TODO: add examples)
 
+BTW: this is my `.vimrc` (included here because it is so short :)
+
+```
+execute pathogen#infect()
+syntax on
+filetype plugin indent on
+set tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab autoindent
+set hlsearch incsearch
+set autoread
+set scrolloff=3
+```
+
 
 ## Atom
 
