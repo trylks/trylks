@@ -13,7 +13,7 @@ Docker for everything? Sounds like a plan...
 
 ## Vim
 
-1. `aptitude install vim` Done! Ha ha... it's never so easy.
+1. `sudo aptitude install vim` Done! Ha ha... it's never so easy.
 2. [Pathogen](http://github.com/tpope/vim-pathogen) for plugin management. There are other options,
    like [Vundle](http://github.com/gmarik/vundle), and [Neobundle](http://github.com/Shougo/neobundle.vim).
    I find pathogen the most simple to install and use, and I am too lazy to heavily customize vim,
@@ -26,19 +26,22 @@ Docker for everything? Sounds like a plan...
 
 ## Atom
 
-I find Atom a lot easier to use and customize. From [the official documentation](https://flight-manual.atom.io/getting-started/sections/installing-atom/):
+I find Atom a lot easier to use and customize.
+There are other awesome editors like Spacemacs, or regular emacs (especially with ensime, maybe with neotree).
+Life is too short.
+From [the official documentation](https://flight-manual.atom.io/getting-started/sections/installing-atom/):
 
 1. Add the repository: `curl -L https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -`
 1. `sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'`
-1. `aptitude update && aptitude -y install atom`
-1. 
-
-## Java
-
-`aptitude install default-jdk` :D
+1. `sudo aptitude update && aptitude -y install atom`
+1. `apm install hydrogen parinfer vim-mode-plus rainbow-delimiters lisp-paredit atom-beautify proto-repl`
 
 
 ## Leiningen
+
+1. Install Java: `sudo aptitude install default-jdk`
+1. [Install](https://leiningen.org/)
+1. Configure (ToDo)
 
 ## Node
 
@@ -50,12 +53,19 @@ Thank you, Tim!
 
 1. NVM: `curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash`
 1. Node: `nvm install node`
+1. ClojureScript (ToDo)
 
 ## Python
 
-1. Install pip if you don't have it yet
-1. Install pipenv
-1. Always use pipenv!
-1. Create a test project: 
+1. `aptitude install python3-pip`
+1. `pip3 install --upgrade pipenv`
+1. `mkdir -p ~/code/python/whatever && cd ~/code/python/whatever && pipenv --three`
 
 ## Docker
+
+ToDo
+
+## Scala
+
+1. SBT
+1. ENSIME
