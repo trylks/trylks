@@ -75,9 +75,20 @@ Thank you, Tim!
 
 ## Docker
 
-ToDo
+There are two options:
+
+1. Use the default docker version in your Ubuntu (just `aptitude install docker.io`)
+1. Use Docker's version (add to `sources.list.d` then `aptitude install docker-ce`)
+
+The first option is easier and more stable at the cost of being older. The perfect option for the lazy.
 
 ## Scala
 
 1. SBT
 1. ENSIME
+
+
+## Side notes
+
+You may mess up your installation and dependencies especially every two years when switching to another LTS version.
+This helps to check everything is in order: `dpkg --audit && apt-get check`
